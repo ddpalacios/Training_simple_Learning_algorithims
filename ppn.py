@@ -1,20 +1,6 @@
 #This script will demonstrate our simpliest classification model --> Perceptron
-#Lets start by import the following libraries and create a dummy dataset
-
+#Lets start by import the following libraries
 import numpy as np
-import matplotlib.pyplot as plt
-
-data = np.array([
-       [1.2 ,1.1 ,1.0],
-       [2.2, 5,  1.0],
-       [1.0,   2,  1.0],
-       [1.7 ,1.5, 1.0],
-       [2.3, 4.1, 1.0],
-       [4.0, 5.0, 0.0],
-       [3,  9.0, 0.0],
-       [4.5, 6.2, 0.0],
-       [5.5 ,2.1 ,0.0],
-       [7.7 ,5.4, 0.0 ]])
 #Now that we have our Dataset, lets create our simple model
 class Perceptron(object):
 	def __init__(self, lr=.01, epochs=20):
@@ -37,25 +23,31 @@ class Perceptron(object):
 				self.weights[1:]+= error * xi
 				self.weights[0]+= error
 
-				cost += int(error !=0.0)
-			self.cost.append(cost)
+				cost += int(error !=0.0)  #If the error is NOT 0.0 then add it to the cost
+			self.cost.append(cost) #and append it to our cost list so we can keep track of it
 		return self
 
 
 	def net_input(self,X):
-		pass
+		return np.dot(X, self.weights[1:]) + self.weights[0]
 
 	def predict(self, X):
-		pass
+		return np.where(self.net_input(X) >= 0.0, 1, -1)
 
-	def score(self, X):
-		pass
+	def score(self, X,y):
+		prediction = self.predict(X)
+		correct = np.count_nonzero(prediction == y)
+		print("Misclassified:", len(X) - correct)
+		res = (correct / len(X)) *100
+		mis = len(X) - correct
+		wrong (mis / len(X))*100
+		return res, wrong
 
 
 
 
-ppn = Perceptron()
 
-print(ppn)
+
+
 
 
