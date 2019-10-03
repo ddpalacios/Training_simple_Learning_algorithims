@@ -31,7 +31,16 @@ class Perceptron(object):
 			error = 0 #Amount of errors per epochs
 
 			for xi, target in zip(X,y):
-				update = self.lr * (self.predict(xi))
+				update = self.predict(xi)
+				error = self.lr * (target - update)  #The amount of error based on the target label
+				#We will now use our error to update our weights accordinly
+				self.weights[1:]+= error * xi
+				self.weights[0]+= error
+
+				cost += int(error !=0.0)
+			self.cost.append(cost)
+		return self
+
 
 	def net_input(self,X):
 		pass
