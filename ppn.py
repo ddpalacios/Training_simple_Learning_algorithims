@@ -16,6 +16,29 @@ data = np.array([
        [5.5 ,2.1 ,0.0],
        [7.7 ,5.4, 0.0 ]])
 #Now that we have our Dataset, lets create our simple model
+class Perceptron(object):
+	def __init__(self, lr=.01, epochs=20):
+		self.lr =lr
+		self.epochs = epochs
+	def fit(self, X,y):
+		pass
 
+	def net_input(self,X):
+		pass
+
+	def predict(self, X):
+		pass
+
+	def initialize_weights(self, X):
+		pass
+	def score(self, X):
+		pass
+
+
+
+
+ppn = Perceptron()
+
+print(ppn)
 
 
