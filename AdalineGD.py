@@ -1,6 +1,6 @@
 import numpy as np
 
-class Adaline(object):
+class Adaline_gd(object):
 	def __init__(self, lr= .01, epochs= 10):
 		self.lr = lr
 		self.epohcs = epochs
