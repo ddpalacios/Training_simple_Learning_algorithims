@@ -36,14 +36,14 @@ class Adaline_sgd(object):
 		self.rgen = np.random.RandomState(self.random_state)
 		self.weights = self.rgen.normal(loc=0.0, scale=0.01, size= 1+m)
 		self.weights_initialized = True
-	def update_weights(self, xi,target):
+	def update_weights(self, xi,y):
 		#Lets apply to adaline learning rule to update our weights
 		net = self.net_input(xi)
 		output = self.activate(net)
-		error = (target - output)
+		error = (y - output)
 		self.weights[1:]+= self.lr * xi.dot(error)
 		self.weights[0]+= self.lr * error
-		cost = (-target.dot(np.log(output))- ((1-target).dot(np.log(1-output))))
+		cost = (error**2) / 2.0
 		return cost
 
 	def net_input(self, X):
