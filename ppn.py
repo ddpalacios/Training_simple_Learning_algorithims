@@ -8,13 +8,13 @@ class Perceptron(object):
 		self.epochs = epochs
 	def fit(self, X,y):
 		self.weights = np.random.rand(X.shape[1]+ 1)  #Creating our starting weights with a bias
-		np.seed(0) #To make sure there are no different weight values
+#		np.seed(0) #To make sure there are no different weight values
 
 		self.cost = []  #We need to keep track of our learning expenses so we can graph later
 
 
 		for _ in range(self.epochs):
-			error = 0 #Amount of errors per epochs
+			cost = 0 #Amount of errors per epochs
 
 			for xi, target in zip(X,y):
 				update = self.predict(xi)
@@ -40,7 +40,7 @@ class Perceptron(object):
 		print("Misclassified:", len(X) - correct)
 		res = (correct / len(X)) *100
 		mis = len(X) - correct
-		wrong (mis / len(X))*100
+		wrong= (mis / len(X))*100
 		return res, wrong
 
 
