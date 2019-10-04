@@ -3,10 +3,10 @@ import numpy as np
 class Adaline_gd(object):
 	def __init__(self, lr= .01, epochs= 10):
 		self.lr = lr
-		self.epohcs = epochs
+		self.epochs = epochs
 	def fit(self, X,y):
 		self.weights = np.random.rand(X.shape[1]+1)
-		np.seed(0)
+
 		self.cost = []
 		for _ in range(self.epochs):
 			net = self.net_input(X)
