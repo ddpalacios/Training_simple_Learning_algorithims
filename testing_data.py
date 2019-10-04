@@ -1,9 +1,12 @@
+import matplotlib
+matplotlib.rcParams["backend"] = "Agg"
 from ppn import Perceptron
 from AdalineSGD import Adaline_sgd
 from AdalineGD import Adaline_gd
 from plot_regions import plot_decision_regions as plt_rgn
 import matplotlib.pyplot as plt
 import numpy as np
+
 data_matrix = np.array([
        [1.2 ,1.1 ,1.0],
        [2.2, 5,  1.0],
@@ -40,3 +43,5 @@ adaGD.fit(X,target)
 adaSGD.fit(X,target)
 PPN.fit(X,target)
 
+plt_rgn(X, target, classifier = adaGD)
+plt.show(block=True)
